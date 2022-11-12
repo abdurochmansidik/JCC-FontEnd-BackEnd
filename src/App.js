@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './component/pages/Home';
+import Login from './component/pages/Login';
+import Regis from './component/pages/Regis';
+import Post from './component/pages/Post';
+import User from './component/pages/User';
+import Footer from './component/partial/Footer';
+import Dashboard from './component/pages/Dashboard';
+import EditPost from './component/partial/EditPost';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+    {/* <NavbarLogout/> */}
+      <Routes>
+        <Route path="/" element = {<Dashboard/>}/>
+        <Route path="/home" element = {<Home/>}/>
+        <Route path="/post" element = {<Post/>}/>
+        <Route path="/user" element = {<User/>}/>
+        <Route path="/login" element = {<Login/>}/>
+        <Route path="/regis" element = {<Regis/>}/>
+        <Route path="/edit/:id" element={<EditPost/>}/>
+      </Routes>
+      <Footer/>
+    </BrowserRouter>
+    
+  )
 }
 
 export default App;
