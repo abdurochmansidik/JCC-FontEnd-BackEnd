@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavbarLogin from "../partial/NavbarLogin";
 
 
@@ -12,6 +12,7 @@ const Regis = () => {
     const [nam, setNam] = useState('');
     const [mail, setMail] = useState('');
     const [pwd, setPwd] = useState('');
+    const navigate = useNavigate()
 
     const handleRegis = async (e) =>{
         // console.log(user)
@@ -23,11 +24,12 @@ const Regis = () => {
         password: pwd
       })
       .then(function (response) {
+
         console.log(response);
-        // localStorage.setItem('token',response.data.data.token)
-        
-    //     console.log(response.status);
-    //   console.log(response.data);
+        navigate ('/login')
+        // localStorage.setItem('token',response.data.data.token)   
+        // console.log(response.status);
+        // console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -89,7 +91,7 @@ const Regis = () => {
         </form>
 
         <div className="text-center fs-6 mt-2">
-          <Link to="/">Login</Link>
+          <Link to="/login">Login</Link>
         </div>
 
       </div>
